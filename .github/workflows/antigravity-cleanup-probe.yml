@@ -24,6 +24,7 @@ jobs:
       - name: Focused Windows tests
         run: vp test run apps/server/src/provider/AntigravityRuntimeTemp.test.ts apps/server/src/provider/AntigravityInstallation.test.ts apps/server/src/textGeneration/AntigravityTextGeneration.test.ts
       - name: Official runtime install and isolated cleanup
+        if: ${{ !cancelled() }}
         working-directory: apps/server
         shell: pwsh
         run: node --input-type=module --eval (Get-Content -Raw ../../.github/antigravity-cleanup-probe.mjs)
